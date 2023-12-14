@@ -28,7 +28,7 @@ jobs:
       - name: chrisztyo
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.chrisztyo }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Set up Docker Buildx
@@ -42,7 +42,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.chrisztyo }}/socket-chat-app:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/socket-chat-app:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
